@@ -12,12 +12,7 @@ import javax.persistence.OneToMany;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
  
-/**
- * Entity bean with JPA annotations
- * Hibernate provides JPA implementation
- * @author pankaj
- *
- */
+
 @Entity
 public class Person extends AbstractPersistable<Integer> {
 
