@@ -30,11 +30,11 @@ public class Hello {
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index() {
+	public String index	() {
 		return "/jsp/index";
 	}
 
-	@RequestMapping("/persons")
+	@RequestMapping(value = "/persons")
 	@ResponseBody
 	public  Collection<Person> hibernate() {
 		Collection<Person> persons=service.find();

@@ -16,7 +16,7 @@
     </context-param>
 
     <!-- Enables Spring Security -->
-     <filter>
+     <!-- <filter>
         <filter-name>springSecurityFilterChain</filter-name>
         <filter-class>
             org.springframework.web.filter.DelegatingFilterProxy
@@ -42,21 +42,34 @@
     <filter-mapping>
         <filter-name>springSecurityFilterChain</filter-name>
         <url-pattern>/*</url-pattern>
-    </filter-mapping>
+    </filter-mapping>-->
     
-    <!-- 
-	<servlet>
-		<servlet-name>mvc-dispatcher</servlet-name>
-		<servlet-class>
-			org.springframework.web.servlet.DispatcherServlet
-        </servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>-->
-
+    
+   
     
      <welcome-file-list>
         <welcome-file>/WEB-INF/jsp/index.jsp</welcome-file>
     </welcome-file-list>
+ 
+    
+	<filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+
+ 	<filter>
+		  <filter-name>CorsFilter</filter-name>
+		  <filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
+		</filter>
+		<filter-mapping>
+		  <filter-name>CorsFilter</filter-name>
+		  <url-pattern>/*</url-pattern>
+		</filter-mapping>
  
    <servlet>
     <servlet-name>sample</servlet-name>
