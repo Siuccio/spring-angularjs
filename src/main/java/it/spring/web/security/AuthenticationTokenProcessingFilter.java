@@ -1,6 +1,6 @@
 package it.spring.web.security;
 
-import it.spring.web.repository.PersonRepository;
+
 import it.spring.web.service.UserDetailsServiceImpl;
 
 import java.io.IOException;

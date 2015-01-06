@@ -1,5 +1,6 @@
 package it.spring.web.service;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -7,7 +8,6 @@ import java.util.Set;
 import it.spring.web.model.GrantedAuthorityImpl;
 import it.spring.web.model.UserDetailsImpl;
 import it.spring.web.model.Users;
-import it.spring.web.repository.PersonRepository;
 import it.spring.web.repository.UsersRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,13 +28,14 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException {
-		List<Users> users=repository.findUsername(username);
-		if(users!=null && users.size()>0)
+		
+		Users users=repository.findUsername(username);
+		if(users!=null)
 		{
-			Users us=users.get(0);
+			
 			Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
-			authorities.add(new GrantedAuthorityImpl(us.getAuthority()));
-			return new UserDetailsImpl(us.getUsername(),us.getPassword(),authorities);
+			authorities.add(new GrantedAuthorityImpl(users.getAuthority().toString()));
+			return new UserDetailsImpl(users.getUsername(),users.getPassword(),authorities);
 		}
 		return null;
 	}

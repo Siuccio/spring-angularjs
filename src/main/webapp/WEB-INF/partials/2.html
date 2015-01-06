@@ -1,0 +1,26 @@
+             
+     <div ng-controller="MyCtrl">
+   	 	<div ng-repeat="left in leftUser" class="row">
+       	 	  <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            {{left.username}}
+                           
+                            
+                        </div>
+                     
+                    </div>
+                </div>
+        	  <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            {{right[$index].username}}
+                           
+                            
+                        </div>
+                     
+                    </div>
+                </div>
+    	</div>
+	</div>        
+              

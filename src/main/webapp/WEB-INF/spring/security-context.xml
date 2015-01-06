@@ -49,8 +49,7 @@
 		authentication-manager-ref="authenticationManager">
 		<security:custom-filter ref="authenticationTokenProcessingFilter"
 			position="FORM_LOGIN_FILTER" />
-		<security:intercept-url pattern="/login/user" access="permitAll()" />
-		 <security:intercept-url pattern="/**" access="hasRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/login" access="permitAll()" />
 	</security:http>
 
 	<bean id="unauthorizedEntryPoint" class="it.spring.web.security.UnauthorizedEntryPoint" />

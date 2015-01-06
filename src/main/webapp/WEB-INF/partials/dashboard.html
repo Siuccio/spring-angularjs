@@ -1,0 +1,49 @@
+ <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Task Manager</a>
+            </div>
+            <!-- /.navbar-header -->
+
+           
+            <!-- /.navbar-top-links -->
+
+
+<!--MENU LATERALE-->
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+    				<li ng-repeat="menu in menu_laterale">
+      					<a href="{{menu.page}}"><i class="fa fa-dashboard fa-fw"></i> {{menu.name}}</a>
+      					<!--a nhref="{{menu.page}}" ng-click="click(menu.page)"><i class="fa fa-dashboard fa-fw"></i> {{menu.name}}</a-->
+    				</li>
+    				<li>
+                        <a href="" ng-click="logout()"><i class="fa fa-close fa-fw"></i> Logout</a>
+                    </li>
+  
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+	<div id="page-wrapper">
+	 	<div ng-switch="pagina">
+     		<div ng-switch-when="situazione_task">
+   				<div ng-include="'partials/2.html'" ></div> 
+			</div>
+			<div ng-switch-when="crea_task">
+   				<div ng-include="'partials/3.html'" ></div> 
+			</div>
+		</div>
+	</div>
+</div>
+    

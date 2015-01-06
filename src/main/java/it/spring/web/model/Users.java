@@ -1,34 +1,54 @@
 package it.spring.web.model;
 
 
-import java.util.Set;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-
-import org.springframework.data.jpa.domain.AbstractPersistable;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
  
 
-@Entity
-public class Users extends AbstractPersistable<Integer> {
+@javax.persistence.Entity
+public class Users {
 
     private static final long serialVersionUID = -8712872385957386182L;
 
+  
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "user_id")
+	private Integer id=1;
     private String username = null;
     private String password = null;
-
-    //@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-    //@JoinColumn(name="USERNAME", nullable=false)
-   // private Set<Authorities> authorities = null;
-    
-    private String authority;
+    private Role authority;
 
    
+    public Users() {
+		super();
+		
+	}
+    public Users(String username,  Role authority) {
+  		super();
+  		this.username = username;
+ 
+  		this.authority = authority;
+  	}
+    
+    public Users(String username, String password, Role authority) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.authority = authority;
+	}
+    public Users(Integer id,String username, String password, Role authority) {
+		super();
+		this.id=id;
+		this.username = username;
+		this.password = password;
+		this.authority = authority;
+	}
 
-    public String getUsername() {
+	public String getUsername() {
 		return username;
 	}
 
@@ -46,11 +66,11 @@ public class Users extends AbstractPersistable<Integer> {
 	
 	
 
-	public String getAuthority() {
+	public Role getAuthority() {
 		return authority;
 	}
 
-	public void setAuthority(String authority) {
+	public void setAuthority(Role authority) {
 		this.authority = authority;
 	}
 
@@ -59,6 +79,8 @@ public class Users extends AbstractPersistable<Integer> {
 		return "Users [username=" + username + ", password=" + password
 				+ ", authority=" + authority + "]";
 	}
+
+	
 
 	
 
