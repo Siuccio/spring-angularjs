@@ -15,7 +15,8 @@ phonecatServices.factory('Phone', ['$resource',
 
 phonecatServices.factory('LoginService', ['$resource',
   function($resource){
-   return $resource('http://localhost\\:8080/spring-angularjs/login/:par', {},
+   //return $resource('http://localhost\\:8080/spring-angularjs/rest/login/:par', {},
+	return $resource('/spring-angularjs/rest/login/:par', {},
 	
 			{
 				authenticate: {

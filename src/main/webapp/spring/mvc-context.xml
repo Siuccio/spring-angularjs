@@ -10,15 +10,16 @@
         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
 	<context:component-scan base-package="it.spring.web" />
+	<mvc:default-servlet-handler />
+	<mvc:resources mapping="/css/**" location="/WEB-INF/css" />
 	
-	<mvc:view-controller path="/" view-name="index"/>
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
-			<value>/WEB-INF/</value>
+			<value>/</value>
 		</property>
 		<property name="suffix">
-			<value>.html</value>
+			<value>.jsp</value>
 		</property>
 	</bean>
 	<mvc:annotation-driven />  
