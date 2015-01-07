@@ -1,26 +1,77 @@
-             
-     <div ng-controller="MyCtrl">
+  
+     <div ng-controller="SituazioneTaskCtrl">
    	 	<div ng-repeat="left in leftUser" class="row">
-       	 	  <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
+                <div ng-click="clickUser(left.username)" class="col-lg-3 col-md-6">
+                    <div class="panel panel-user">
                         <div class="panel-heading">
-                            {{left.username}}
+                            <table>
+                            <tr><td>
+                            {{left.username}}</td>
+                            <td>
+                           		<img class="pull-right" ng-src="{{left.image}}"></td>
+                            </tr>
+                            	<tr>
+                            	<td>
+                            		Task Assegnati:
+                            	</td>
+                            	<td>
+                            	 	{{left.taskassegnati}}
+                            	 </td>
+                            	</tr>
+                            	<tr>
+                            	<td>
+                         		   Task Presi in carico
+                         		</td>
+                            	<td>
+                            		{{left.taskcarico}}
+                            	</td>
+                            	</tr>
+                            	<tr>
+                           			<td>Task Conclusi</td><td> {{left.taskconclusi}}</td>
+                            	</tr>
+                            </table>
                            
-                            
                         </div>
-                     
                     </div>
-                </div>
-        	  <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
+                </div>  
+                
+        	  <div ng-click="clickUser(rightUser[$index].username)" class="col-lg-3 col-md-6">
+                    <div class="panel panel-user">
                         <div class="panel-heading">
-                            {{right[$index].username}}
-                           
-                            
+                    
+                            <table>
+                            <tr><td>
+                            {{rightUser[$index].username}}</td>
+                            <td>
+                           		<img class="pull-right" ng-src="{{rightUser[$index].image}}"></td>
+                            </tr>
+                            	<tr>
+                            	<td>
+                            		Task Assegnati:
+                            	</td>
+                            	<td>
+                            	 	{{rightUser[$index].taskassegnati}}
+                            	 </td>
+                            	</tr>
+                            	<tr>
+                            	<td>
+                         		   Task Presi in carico
+                         		</td>
+                            	<td>
+                            		{{rightUser[$index].taskcarico}}
+                            	</td>
+                            	</tr>
+                            	<tr>
+                           			<td>Task Conclusi</td><td> {{rightUser[$index].taskconclusi}}</td>
+                            	</tr>
+                            </table>
                         </div>
-                     
                     </div>
                 </div>
     	</div>
-	</div>        
-              
+	</div>      
+  
+
+	
+	 	 	
+    

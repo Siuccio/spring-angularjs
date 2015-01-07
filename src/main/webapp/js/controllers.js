@@ -41,7 +41,7 @@ phonecatControllers.controller('LoginCtrl', ['$scope','$rootScope','$routeParams
 			}
 			, function(response)
 			{
-				$scope.error=$rootScope.error;
+				$scope.error="Error User";
 			}
 			);
 			
@@ -49,7 +49,7 @@ phonecatControllers.controller('LoginCtrl', ['$scope','$rootScope','$routeParams
 		}
 		, function(response)
 		{
-			$scope.error=$rootScope.error;
+			$scope.error="Bad Credentials";
 		}
 		);
 	};
@@ -59,19 +59,24 @@ phonecatControllers.controller('LoginCtrl', ['$scope','$rootScope','$routeParams
 phonecatControllers.controller('SituazioneTaskCtrl', ['$scope','$rootScope','$routeParams','$cookieStore', '$window','$location','TaskNotAssignmentService','UserService',
   function($scope,$rootScope, $routeParams,$cookieStore,$window,$location,TaskNotAssignmentService,UserService) {
   	$scope.pagina="situazione_task";	
-  	UserService.query({role:'ROLE_USER'}, function(users) {
+  	UserService.get({role:'ROLE_USER'}, function(users) {
   		$scope.users=users;
+  		$scope.leftUser = [];
+  		$scope.rightUser = [];
   		var leftUser,rightUser;
-  		for(i=0;i<users.length;i++)
+  		for(var i=0;i<users.length;i++)
   		{	
   			if(i%2==0)
-  				leftUSer=user[i];
+  				$scope.leftUser.push({'username':users[i].username,'image':users[i].image,'taskassegnati':20,'taskcarico':10,'taskconclusi':5});
   			else
-  				rightUser=user[i];
+  				$scope.rightUser.push({'username':users[i].username,'image':users[i].image,'taskassegnati':20,'taskcarico':10,'taskconclusi':5});
   		}
-  		$scope.leftUser=leftUser;
-  		$scope.rightUser=rightUser;
   		
+  		  
+        $scope.taskassegnati=20;
+        $scope.x=10;
+        $scope.taskconclusi=5;
+                            
   		
   	},function(data)
   	{
@@ -84,6 +89,10 @@ phonecatControllers.controller('SituazioneTaskCtrl', ['$scope','$rootScope','$ro
 		$location.path("/login");
 	};
   	
+  	$scope.clickUser=function(username)
+  	{
+  		$window.alert(username);
+  	};
 }]);
 
 

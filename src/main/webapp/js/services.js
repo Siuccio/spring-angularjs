@@ -3,20 +3,19 @@
 /* Services */
 
 var phonecatServices = angular.module('phonecatServices', ['ngResource']);
-
+/*
 phonecatServices.factory('Phone', ['$resource',
   function($resource){
     return $resource('phones/:phoneId.json', {}, {
       query: {method:'GET', params:{phoneId:'phones'}, isArray:true}
     });
-  }]);
+  }]);*/
 
 
 
-phonecatServices.factory('LoginService', ['$resource',
-  function($resource){
-   //return $resource('http://localhost\\:8080/spring-angularjs/rest/login/:par', {},
-	return $resource('/spring-angularjs/rest/login/:par', {},
+phonecatServices.factory('LoginService', ['$resource','$rootScope',
+  function($resource,$rootScope){
+   return $resource($rootScope.address+'/login/:par', {},
 	
 			{
 				authenticate: {
@@ -30,9 +29,9 @@ phonecatServices.factory('LoginService', ['$resource',
   }]);
 
 
-phonecatServices.factory('UserService', ['$resource',
-  function($resource){
-   return $resource('http://localhost\\:8080/spring-angularjs/users/:role', {},
+phonecatServices.factory('UserService', ['$resource','$rootScope',
+  function($resource,$rootScope){
+   return $resource($rootScope.address+'/users/:role', {},
 	
 			{
 				query: {
@@ -41,22 +40,28 @@ phonecatServices.factory('UserService', ['$resource',
 	
 					headers : {'Content-Type': 'application/x-www-form-urlencoded'}
 				},
+				get: {
+					method: 'GET',
+					params: {role:'@role'},
+					isArray:true,
+					headers : {'Content-Type': 'application/x-www-form-urlencoded'}
+				},
 			}
 		);
   }]);
 
 
-phonecatServices.factory('PersonsService', ['$resource',
-  function($resource){
+phonecatServices.factory('PersonsService', ['$resource','$rootScope',
+  function($resource,$rootScope){
    // return $resource('http://localhost\\:8080/spring-angularjs/persons', {},
-   return $resource('http://localhost\\:8080/spring-angularjs/persons', {},
+   return $resource($rootScope.address+'/persons', {},
 			{}
 		);
   }]);
   
- phonecatServices.factory('TaskNotAssignmentService', ['$resource',
-  function($resource){
-   return $resource('http://localhost\\:8080/spring-angularjs/task/not', {},
+ phonecatServices.factory('TaskNotAssignmentService', ['$resource','$rootScope',
+  function($resource,$rootScope){
+   return $resource($rootScope.address+'/task/not', {},
 			{}
 		);
   }]); 

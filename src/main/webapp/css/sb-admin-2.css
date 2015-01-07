@@ -299,24 +299,22 @@ table.dataTable thead .sorting:after {
     font-size: 40px;
 }
 
-.panel-green {
-    border-color: #5cb85c;
-    opacity: 0.8;
-    filter: alpha(opacity=40);
+.panel-user {
+    border-color: #D9EDF7;
 }
 
-.panel-green .panel-heading {
-    border-color: #5cb85c;
-    color: #030303;
-    background-color: #5cb85c;
+.panel-user .panel-heading {
+    border-color: #D9EDF7;
+    color: #31708F;
+    background-color: #D9EDF7;
     
 }
 
-.panel-green a {
-    color: #5cb85c;
+.panel-user a {
+    color: #D9EDF7;
 }
 
-.panel-green a:hover {
+.panel-user a:hover {
     color: #3d8b3d;
 }
 

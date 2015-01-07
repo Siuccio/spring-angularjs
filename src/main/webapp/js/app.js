@@ -10,7 +10,9 @@ var phonecatApp = angular.module('phonecatApp', [
   'phonecatServices'
 ]);
 
-
+phonecatApp.run(function($rootScope) {
+  $rootScope.address="http://localhost\\:8080/spring-angularjs/rest";
+});
 
 phonecatApp.config(['$routeProvider', '$locationProvider', '$httpProvider',
   function($routeProvider, $locationProvider, $httpProvider) {
@@ -38,24 +40,10 @@ phonecatApp.config(['$routeProvider', '$locationProvider', '$httpProvider',
         redirectTo: '/login'
       });
       
-       			$locationProvider.hashPrefix('!');
+       	$locationProvider.hashPrefix('!');
 			
 		$httpProvider.interceptors.push('httpInterceptor'); 	
-		    
-		    /* Registers auth token interceptor, auth token is either passed by header or by query parameter
-		     * as soon as there is an authenticated user */
-		/*    $httpProvider.interceptors.push(function ($q, $rootScope, $location) {
-		        return {
-		        	'request': function(config) {
-		        		
-		  
-		        			config.headers={'Authorization' : '111'};
-		        	
-		        		return config;
-		        	}
-		        };
-		    }
-	    );*/
+
        
        	
   }]);

@@ -40,9 +40,9 @@ public class DataBaseInit
 
 	public void initDataBase()
 	{
-		Users user = new Users("admin","admin",Role.ROLE_ADMIN);
+		Users user = new Users("admin","admin",Role.ROLE_ADMIN,"");
 		this.usersService.save(user);
-		user = new Users("test","test",Role.ROLE_USER);
+		user = new Users("test","test",Role.ROLE_USER,"images/test.jpg");
 		user=this.usersService.save(user);
 		
 
@@ -52,7 +52,7 @@ public class DataBaseInit
 		task.setFase(Fase.NOT_ASSIGNMENT);
 		this.taskService.save(task);
 		
-		user = new Users("alessio","baldini",Role.ROLE_USER);
+		user = new Users("alessio","baldini",Role.ROLE_USER,"images/alessio.jpg");
 		this.usersService.save(user);
 		
 	}

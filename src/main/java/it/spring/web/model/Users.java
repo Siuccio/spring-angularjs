@@ -21,7 +21,7 @@ public class Users {
     private String username = null;
     private String password = null;
     private Role authority;
-
+    private String image;
    
     public Users() {
 		super();
@@ -34,18 +34,20 @@ public class Users {
   		this.authority = authority;
   	}
     
-    public Users(String username, String password, Role authority) {
+    public Users(String username, String password, Role authority,String image) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.authority = authority;
+		this.image=image;
 	}
-    public Users(Integer id,String username, String password, Role authority) {
+    public Users(Integer id,String username, String password, Role authority,String image) {
 		super();
 		this.id=id;
 		this.username = username;
 		this.password = password;
 		this.authority = authority;
+		this.image=image;
 	}
 
 	public String getUsername() {
@@ -78,6 +80,12 @@ public class Users {
 	public String toString() {
 		return "Users [username=" + username + ", password=" + password
 				+ ", authority=" + authority + "]";
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	
