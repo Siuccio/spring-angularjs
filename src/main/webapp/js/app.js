@@ -12,6 +12,7 @@ var phonecatApp = angular.module('phonecatApp', [
 
 phonecatApp.run(function($rootScope) {
   $rootScope.address="http://localhost\\:8080/spring-angularjs/rest";
+	//$rootScope.address="http://localhost\\:8080/rest";
 });
 
 phonecatApp.config(['$routeProvider', '$locationProvider', '$httpProvider',

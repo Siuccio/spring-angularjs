@@ -52,7 +52,11 @@ public class DataBaseInit
 		task.setFase(Fase.NOT_ASSIGNMENT);
 		this.taskService.save(task);
 		
-		user = new Users("alessio","baldini",Role.ROLE_USER,"images/alessio.jpg");
+		user = new Users("Alessio","Baldini",Role.ROLE_USER,"images/alessio.jpg");
+		this.usersService.save(user);
+		user = new Users("Francesco","Corti",Role.ROLE_USER,"images/francesco.jpg");
+		this.usersService.save(user);
+		user = new Users("Roberto","Grimaldi",Role.ROLE_USER,"images/roberto.jpg");
 		this.usersService.save(user);
 		
 	}
