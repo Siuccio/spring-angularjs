@@ -2,20 +2,20 @@
 
 /* App Module */
 
-var phonecatApp = angular.module('phonecatApp', [
+var appSpringAngular = angular.module('appSpringAngular', [
   'ngRoute',
   'ngCookies',
-  'phonecatControllers',
-  'phonecatFilters',
-  'phonecatServices'
+  'appControllers',
+  'appFilters',
+  'appServices'
 ]);
 
-phonecatApp.run(function($rootScope) {
+appSpringAngular.run(function($rootScope) {
   $rootScope.address="http://localhost\\:8080/spring-angularjs/rest";
 	//$rootScope.address="http://localhost\\:8080/rest";
 });
 
-phonecatApp.config(['$routeProvider', '$locationProvider', '$httpProvider',
+appSpringAngular.config(['$routeProvider', '$locationProvider', '$httpProvider',
   function($routeProvider, $locationProvider, $httpProvider) {
     
     $routeProvider.

@@ -1,14 +1,14 @@
 package it.spring.web;
 
-import java.util.Collection;
-
-import it.spring.web.model.Task;
+import it.spring.web.model.ResponseTask;
+import it.spring.web.model.Users;
 import it.spring.web.service.TaskService;
+import it.spring.web.service.UsersService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,10 +20,17 @@ public class TaskController {
 	@Qualifier("taskService")
 	TaskService taskService;
 	
-	@RequestMapping(value = "/task/not", method = RequestMethod.GET)
+	
+	@Autowired
+	@Qualifier("userService")
+	UsersService userService;
+	
+	@RequestMapping(value = "/task/{username}", method = RequestMethod.GET)
 	@ResponseBody
-	public Collection<Task> notAssigment(ModelMap model) {
-		Collection<Task> col=taskService.findNotAssingnet();
-		return col;
+	public ResponseTask taskUser(@PathVariable String username) {
+		
+		Users user=userService.findByUsername(username);
+		return taskService.findTaskUser(user);
+	
 	}
 }

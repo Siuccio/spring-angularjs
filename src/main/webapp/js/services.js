@@ -2,7 +2,7 @@
 
 /* Services */
 
-var phonecatServices = angular.module('phonecatServices', ['ngResource']);
+var appServices = angular.module('appServices', ['ngResource']);
 /*
 phonecatServices.factory('Phone', ['$resource',
   function($resource){
@@ -13,7 +13,7 @@ phonecatServices.factory('Phone', ['$resource',
 
 
 
-phonecatServices.factory('LoginService', ['$resource','$rootScope',
+appServices.factory('LoginService', ['$resource','$rootScope',
   function($resource,$rootScope){
    return $resource($rootScope.address+'/login/:par', {},
 	
@@ -29,7 +29,7 @@ phonecatServices.factory('LoginService', ['$resource','$rootScope',
   }]);
 
 
-phonecatServices.factory('UserService', ['$resource','$rootScope',
+appServices.factory('UserService', ['$resource','$rootScope',
   function($resource,$rootScope){
    return $resource($rootScope.address+'/users/:role', {},
 	
@@ -51,7 +51,7 @@ phonecatServices.factory('UserService', ['$resource','$rootScope',
   }]);
 
 
-phonecatServices.factory('PersonsService', ['$resource','$rootScope',
+appServices.factory('PersonsService', ['$resource','$rootScope',
   function($resource,$rootScope){
    // return $resource('http://localhost\\:8080/spring-angularjs/persons', {},
    return $resource($rootScope.address+'/persons', {},
@@ -59,10 +59,15 @@ phonecatServices.factory('PersonsService', ['$resource','$rootScope',
 		);
   }]);
   
- phonecatServices.factory('TaskNotAssignmentService', ['$resource','$rootScope',
+appServices.factory('TaskNotAssignmentService', ['$resource','$rootScope',
   function($resource,$rootScope){
-   return $resource($rootScope.address+'/task/not', {},
-			{}
+   return $resource($rootScope.address+'/task/{:username}', {},
+			{get: {
+				method: 'GET',
+				params: {username:'@username'},
+				isArray:true,
+				headers : {'Content-Type': 'application/x-www-form-urlencoded'}
+			}}
 		);
   }]); 
 
@@ -70,7 +75,7 @@ phonecatServices.factory('PersonsService', ['$resource','$rootScope',
    
 
   
-phonecatServices.factory('httpInterceptor', ['$q', '$rootScope', '$location',
+appServices.factory('httpInterceptor', ['$q', '$rootScope', '$location',
     function ($q, $rootScope, $location) {
         return {
             request: function (config) {

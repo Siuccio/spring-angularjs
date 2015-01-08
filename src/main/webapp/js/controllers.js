@@ -2,15 +2,15 @@
 
 /* Controllers */
 
-var phonecatControllers = angular.module('phonecatControllers', []);
+var appControllers = angular.module('appControllers', []);
 
-phonecatControllers.controller('PhoneListCtrl', ['$scope', 'Phone',
+appControllers.controller('PhoneListCtrl', ['$scope', 'Phone',
   function($scope, Phone) {
     $scope.phones = Phone.query();
     $scope.orderProp = 'age';
   }]);
 
-phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', 'Phone',
+appControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', 'Phone',
   function($scope, $routeParams, Phone) {
     $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
       $scope.mainImageUrl = phone.images[0];
@@ -21,7 +21,7 @@ phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', 'Ph
     }
   }]);
 
-phonecatControllers.controller('LoginCtrl', ['$scope','$rootScope','$routeParams', '$cookieStore','$window','$location','LoginService',
+appControllers.controller('LoginCtrl', ['$scope','$rootScope','$routeParams', '$cookieStore','$window','$location','LoginService',
   function($scope,$rootScope, $routeParams,$cookieStore,$window,$location,LoginService) {
   	$scope.rememberMe = false;
 	
@@ -56,7 +56,7 @@ phonecatControllers.controller('LoginCtrl', ['$scope','$rootScope','$routeParams
   }]);
   
   
-phonecatControllers.controller('SituazioneTaskCtrl', ['$scope','$rootScope','$routeParams','$cookieStore', '$window','$location','TaskNotAssignmentService','UserService',
+appControllers.controller('SituazioneTaskCtrl', ['$scope','$rootScope','$routeParams','$cookieStore', '$window','$location','TaskNotAssignmentService','UserService',
   function($scope,$rootScope, $routeParams,$cookieStore,$window,$location,TaskNotAssignmentService,UserService) {
   	$scope.pagina="situazione_task";	
   	UserService.get({role:'ROLE_USER'}, function(users) {
@@ -98,14 +98,14 @@ phonecatControllers.controller('SituazioneTaskCtrl', ['$scope','$rootScope','$ro
 
 
 
-phonecatControllers.controller('CreaTaskCtrl', ['$scope','$rootScope','$routeParams','$cookieStore', '$window','$location','TaskNotAssignmentService',
+appControllers.controller('CreaTaskCtrl', ['$scope','$rootScope','$routeParams','$cookieStore', '$window','$location','TaskNotAssignmentService',
   function($scope,$rootScope, $routeParams,$cookieStore,$window,$location,TaskNotAssignmentService) {
   	$scope.pagina="crea_task";	
 }]);
   
   
   
-  phonecatControllers.controller('DashboardCtrl', ['$scope','$rootScope','$routeParams','$cookieStore', '$window','$location','TaskNotAssignmentService','LoginService',
+appControllers.controller('DashboardCtrl', ['$scope','$rootScope','$routeParams','$cookieStore', '$window','$location','TaskNotAssignmentService','LoginService',
   function($scope,$rootScope, $routeParams,$cookieStore,$window,$location,TaskNotAssignmentService,LoginService) {
   	
   			
