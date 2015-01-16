@@ -20,33 +20,33 @@ public class Users {
 	private Integer id=1;
     private String username = null;
     private String password = null;
-    private Role authority;
+    private Role role;
     private String image;
    
     public Users() {
 		super();
 		
 	}
-    public Users(String username,  Role authority) {
+    public Users(String username,  Role role) {
   		super();
   		this.username = username;
  
-  		this.authority = authority;
+  		this.role = role;
   	}
     
-    public Users(String username, String password, Role authority,String image) {
+    public Users(String username, String password, Role role,String image) {
 		super();
 		this.username = username;
 		this.password = password;
-		this.authority = authority;
+		this.role = role;
 		this.image=image;
 	}
-    public Users(Integer id,String username, String password, Role authority,String image) {
+    public Users(Integer id,String username, String password, Role role,String image) {
 		super();
 		this.id=id;
 		this.username = username;
 		this.password = password;
-		this.authority = authority;
+		this.role = role;
 		this.image=image;
 	}
 
@@ -68,18 +68,18 @@ public class Users {
 	
 	
 
-	public Role getAuthority() {
-		return authority;
-	}
+	
 
-	public void setAuthority(Role authority) {
-		this.authority = authority;
+	public Role getRole() {
+		return role;
 	}
-
+	public void setRole(Role role) {
+		this.role = role;
+	}
 	@Override
 	public String toString() {
 		return "Users [username=" + username + ", password=" + password
-				+ ", authority=" + authority + "]";
+				+ ", role=" + role + "]";
 	}
 	public String getImage() {
 		return image;

@@ -1,0 +1,31 @@
+<div>
+<p>{{username}}</p>
+<p>Assegnati</p>
+<ul ng-repeat="task in tasksAssigment.content">
+	<li>
+		{{task.title}}
+	</li>
+</ul>
+<p>Presi in carico</p>
+<ul ng-repeat="task in tasksTake.content">
+	<li>
+		{{task.title}}
+	</li>
+</ul>
+<p>Conclusi</p>
+<ul ng-repeat="task in tasksConclude.content">
+	<li>
+		{{task.title}}
+	</li>
+</ul>
+
+
+     <table ng-table="tableParams" class="table">
+        <tr ng-repeat="user in $data">
+            <td data-title="'Name'">{{user.name}}</td>
+            <td data-title="'Age'">{{user.age}}</td>
+        </tr>
+        </table>
+    </table>
+
+</div>

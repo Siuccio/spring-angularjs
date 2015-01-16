@@ -35,6 +35,10 @@ public class Task{
     @Enumerated(EnumType.STRING)
     private Fase fase;
     
+    @Enumerated(EnumType.STRING)
+    private Critical criticality;
+    
+    
     @OneToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="user_id", nullable=false)
     private Users users = null;
@@ -112,13 +116,25 @@ public class Task{
 		this.users = users;
 	}
 
+	
+	
+	public Critical getCriticality() {
+		return criticality;
+	}
+
+	public void setCriticality(Critical criticality) {
+		this.criticality = criticality;
+	}
+
 	@Override
 	public String toString() {
 		return "Task [id=" + id + ", title=" + title + ", description="
 				+ description + ", assignment=" + assignment + ", conclusion="
 				+ conclusion + ", dayWork=" + dayWork + ", area=" + area
-				+ ", fase=" + fase + ", users=" + users + "]";
+				+ ", fase=" + fase + ", criticality=" + criticality
+				+ ", users=" + users + "]";
 	}
+
 
 
 

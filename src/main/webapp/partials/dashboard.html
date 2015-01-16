@@ -37,12 +37,16 @@
         </nav>
 	<div id="page-wrapper">
 	 	<div ng-switch="pagina">
-     		<div ng-switch-when="situazione_task">
-   				<div ng-include="'partials/2.html'" ></div> 
+     		<div ng-switch-when="situazione_task" class="include-animation">
+   				<div ng-include="'partials/situation_task.html'" ></div> 
 			</div>
-			<div ng-switch-when="crea_task">
-   				<div ng-include="'partials/3.html'" ></div> 
+			<div ng-switch-when="crea_task" class="include-animation">
+   				<div ng-include="'partials/creation_task.html'" ></div> 
 			</div>
+
+            <div ng-switch-when="lista_task" class="include-animation">
+                <div ng-include="'partials/lista_task.html'" ></div> 
+            </div>
 		</div>
 	</div>
 </div>

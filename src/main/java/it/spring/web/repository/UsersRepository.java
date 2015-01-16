@@ -14,10 +14,17 @@ import org.springframework.transaction.annotation.Transactional;
 public interface UsersRepository extends JpaRepository<Users,Integer> {
     
 	
-	@Query("SELECT p FROM Users p WHERE LOWER(p.username) = LOWER(:username)")
-    public Users findUsername(@Param("username") String username);
+	//@Query("SELECT p FROM Users p WHERE LOWER(p.username) = LOWER(:username)")
+    //public Users findUsername(@Param("username") String username);
 	
 	
-	@Query("SELECT p FROM Users p WHERE p.authority = :role")
-    public Collection<Users> findByRole(@Param("role") Role role);
+	public Users findByUsername(String username);
+	
+	/*@Query("SELECT p FROM Users p WHERE p.authority = :role")
+    public Collection<Users> findByRole(@Param("role") Role role);*/
+    public Collection<Users> findByRole(Role role);
+	
+	
+	//@Query("SELECT p FROM Users p WHERE p.authority = :role")
+	//public Long countByRole()
 }

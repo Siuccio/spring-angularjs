@@ -4,15 +4,25 @@
 
 var appSpringAngular = angular.module('appSpringAngular', [
   'ngRoute',
+  'ngAnimate',
   'ngCookies',
   'appControllers',
   'appFilters',
-  'appServices'
+  'appServices',
+  'ngTable'
 ]);
 
-appSpringAngular.run(function($rootScope) {
+appSpringAngular.run(function($rootScope,$cookieStore,$location) {
   $rootScope.address="http://localhost\\:8080/spring-angularjs/rest";
-	//$rootScope.address="http://localhost\\:8080/rest";
+	
+
+
+     $rootScope.logout = function() {
+      delete $rootScope.user;
+      delete $rootScope.authToken;
+      $cookieStore.remove('authToken');
+      $location.path("/login");
+    };
 });
 
 appSpringAngular.config(['$routeProvider', '$locationProvider', '$httpProvider',
@@ -37,6 +47,10 @@ appSpringAngular.config(['$routeProvider', '$locationProvider', '$httpProvider',
         controller: 'CreaTaskCtrl'
       }).
         
+       when('/lista_task/:username', {
+        templateUrl: 'partials/dashboard.html',
+        controller: 'ListaTaskCtrl'
+      }).
       otherwise({
         redirectTo: '/login'
       });

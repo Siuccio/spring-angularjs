@@ -41,4 +41,15 @@ public class UserController {
 		}
 	}
 	
+	
+	@RequestMapping(value = "/users/username/{username}", method = RequestMethod.GET)
+	@ResponseBody
+	public Users getUserByUsername(@PathVariable String username) {
+		
+			
+			Users col=userService.findByUsername(username);
+			return col;
+		
+	}
+	
 }

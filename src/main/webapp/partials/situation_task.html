@@ -1,5 +1,5 @@
   
-     <div ng-controller="SituazioneTaskCtrl">
+     <div >
    	 	<div ng-repeat="left in leftUser" class="row">
                 <div ng-click="clickUser(left.username)" class="col-lg-3 col-md-6">
                     <div class="panel panel-user">
@@ -15,7 +15,7 @@
                             		Task Assegnati:
                             	</td>
                             	<td>
-                            	 	{{left.taskassegnati}}
+                            	 	{{left.taskassignmentcount}}
                             	 </td>
                             	</tr>
                             	<tr>
@@ -23,11 +23,11 @@
                          		   Task Presi in carico
                          		</td>
                             	<td>
-                            		{{left.taskcarico}}
+                            		{{left.tasktakecount}}
                             	</td>
                             	</tr>
                             	<tr>
-                           			<td>Task Conclusi</td><td> {{left.taskconclusi}}</td>
+                           			<td>Task Conclusi</td><td> {{left.taskconclusicount}}</td>
                             	</tr>
                             </table>
                            
@@ -50,7 +50,7 @@
                             		Task Assegnati:
                             	</td>
                             	<td>
-                            	 	{{rightUser[$index].taskassegnati}}
+                            	 	{{rightUser[$index].taskassignmentcount}}
                             	 </td>
                             	</tr>
                             	<tr>
@@ -58,11 +58,11 @@
                          		   Task Presi in carico
                          		</td>
                             	<td>
-                            		{{rightUser[$index].taskcarico}}
+                            		{{rightUser[$index].tasktakecount}}
                             	</td>
                             	</tr>
                             	<tr>
-                           			<td>Task Conclusi</td><td> {{rightUser[$index].taskconclusi}}</td>
+                           			<td>Task Conclusi</td><td> {{rightUser[$index].taskconclusicount}}</td>
                             	</tr>
                             </table>
                         </div>

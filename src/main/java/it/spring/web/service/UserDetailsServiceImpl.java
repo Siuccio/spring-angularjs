@@ -1,8 +1,6 @@
 package it.spring.web.service;
 
-import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import it.spring.web.model.GrantedAuthorityImpl;
@@ -29,12 +27,12 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException {
 		
-		Users users=repository.findUsername(username);
+		Users users=repository.findByUsername(username);
 		if(users!=null)
 		{
 			
 			Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
-			authorities.add(new GrantedAuthorityImpl(users.getAuthority().toString()));
+			authorities.add(new GrantedAuthorityImpl(users.getRole().toString()));
 			return new UserDetailsImpl(users.getUsername(),users.getPassword(),authorities);
 		}
 		return null;
