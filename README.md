@@ -5,7 +5,7 @@
 This application is a simple Spring and AngularJs example.<br>
 For  back-end services  use: `Spring-MVC`,` Spring-Security` and `JPA`.<br>
 For front-end service use: `AngularJs`, `Boostrap`.<br>
-The application implements a simple tasks managament.
+The application implements a simple tasks management.
 
 ## Prerequisites
 
@@ -30,5 +30,6 @@ Intall maven
  Execute:
  `mvn jetty:run`
 The URL `http://localhost/spring-angularjs`<br>
- find the application. To enter use credentials: `admin` `admin`
+ find the application. To enter use credentials: `admin` `admin` for to enter as administrator.
+ Whit the credentials:`test` `test` for to enter as user.
  

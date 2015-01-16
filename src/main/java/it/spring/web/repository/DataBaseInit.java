@@ -111,11 +111,11 @@ public class DataBaseInit
 		task.setCriticality(Critical.EMERGERCY);
 		this.taskService.save(task);
 		
-		user = new Users("Alessio","Baldini",Role.ROLE_USER,"images/alessio.jpg");
+		user = new Users("alessio","alessio",Role.ROLE_USER,"images/alessio.jpg");
 		this.usersService.save(user);
-		user = new Users("Francesco","Corti",Role.ROLE_USER,"images/francesco.jpg");
+		user = new Users("francesco","francesco",Role.ROLE_USER,"images/francesco.jpg");
 		this.usersService.save(user);
-		user = new Users("Roberto","Grimaldi",Role.ROLE_USER,"images/roberto.jpg");
+		user = new Users("roberto","roberto",Role.ROLE_USER,"images/roberto.jpg");
 		this.usersService.save(user);
 		
 	}
