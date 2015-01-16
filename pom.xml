@@ -42,7 +42,7 @@
 			<version>${spring.security.version}</version>
 		</dependency>
 
-	
+
 
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -106,7 +106,7 @@
 			<version>1.7.1.RELEASE</version>
 		</dependency>
 
-	
+
 
 		<dependency>
 			<groupId>javax.ws.rs</groupId>
@@ -121,30 +121,85 @@
 			<version>${org.hsqldb.version}</version>
 		</dependency>
 
-    <dependency>
-      <groupId>org.eclipse.jetty</groupId>
-      <artifactId>jetty-server</artifactId>
-      <version>${jettyVersion}</version>
-    </dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-server</artifactId>
+			<version>${jettyVersion}</version>
+		</dependency>
 
 
 	</dependencies>
 	<build>
 		<finalName>spring-angularjs</finalName>
 		<plugins>
-				<plugin>
-		        <!-- This plugin is needed for the servlet example -->
-		        <groupId>org.mortbay.jetty</groupId>
-		        <artifactId>jetty-maven-plugin</artifactId>
-		        <version>${jettyVersion}</version>
-		         <configuration>    
-   				 <webAppConfig>
-           			 <contextPath>/spring-angularjs</contextPath>             
-            	</webAppConfig>
-                </configuration>
-		      </plugin>
-		      
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<executable>bower</executable>
+					<arguments>
+						<argument>install</argument>
+					</arguments>
+					<workingDirectory>${basedir}/src/main/webapp</workingDirectory>
+				</configuration>
+			</plugin>
+			<plugin>
+				<!-- This plugin is needed for the servlet example -->
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>${jettyVersion}</version>
+				<configuration>
+					<webAppConfig>
+						<contextPath>/spring-angularjs</contextPath>
+					</webAppConfig>
+				</configuration>
+			</plugin>
+
 		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.codehaus.mojo
+										</groupId>
+										<artifactId>
+											exec-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.3.2,)
+										</versionRange>
+										<goals>
+											<goal>exec</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 
 	<properties>
