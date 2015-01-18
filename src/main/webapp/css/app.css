@@ -82,3 +82,9 @@ ul.specs dt {
 h1 {
   border-bottom: 1px solid gray;
 }
+
+.top-buffer { margin-top:10px; }
+
+.circle_HIGH{width:20px;height:20px;border-radius:20px;font-size:10px;color:#FA8E0A;line-height:100px;text-align:center;background:#FA8E0A}
+.circle_LOW{width:20px;height:20px;border-radius:20px;font-size:10px;color:#0AFAA6;line-height:100px;text-align:center;background:#0AFAA6}
+.circle_EMERGERCY{width:20px;height:20px;border-radius:20px;font-size:10px;color:#FA0A32;line-height:100px;text-align:center;background:#FA0A32}

@@ -96,12 +96,15 @@ appControllers.controller('SituazioneTaskCtrl', ['$scope','$rootScope','$routePa
       //
       //$rootScope.username=username;
       $location.path("lista_task/"+username);
-      //$scope.pagina="lista_task/"; 
+     ì
     };
 }]);
 
 
-
+appControllers.controller('DetailsTaskCtrl', ['$scope','$rootScope','$routeParams','$cookieStore', '$window','$location','TaskService',
+  function($scope,$rootScope, $routeParams,$cookieStore,$window,$location,TaskService) {
+    $scope.task_id=$routeParams.task_id;
+}]);
 
 appControllers.controller('CreaTaskCtrl', ['$scope','$rootScope','$routeParams','$cookieStore', '$window','$location','TaskService',
   function($scope,$rootScope, $routeParams,$cookieStore,$window,$location,TaskService) {
@@ -118,7 +121,7 @@ appControllers.controller('ListaTaskCtrl', ['$scope','$rootScope','$routeParams'
     UserService.get({username:username}, function(user) {
       $scope.user=user;
    
-      
+      $scope.image=user.image;
       
        TaskService.get({username:user.username,fase:'ASSIGNMENT',page:0}, function(task) {
           var title=[];
@@ -168,35 +171,11 @@ appControllers.controller('ListaTaskCtrl', ['$scope','$rootScope','$routeParams'
       console.log="Errore load user ruolo ROLE_USER"
     });
 
+  $scope.openTask=function(id)
+  {
+    $location.path("/details_task/"+id);
+  }
 
-
-var data = [{name: "Moroni", age: 50},
-                {name: "Tiancum", age: 43},
-                {name: "Jacob", age: 27},
-                {name: "Nephi", age: 29},
-                {name: "Enos", age: 34},
-                {name: "Tiancum", age: 43},
-                {name: "Jacob", age: 27},
-                {name: "Nephi", age: 29},
-                {name: "Enos", age: 34},
-                {name: "Tiancum", age: 43},
-                {name: "Jacob", age: 27},
-                {name: "Nephi", age: 29},
-                {name: "Enos", age: 34},
-                {name: "Tiancum", age: 43},
-                {name: "Jacob", age: 27},
-                {name: "Nephi", age: 29},
-                {name: "Enos", age: 34}];
-
-    $scope.tableParams = new ngTableParams({
-        page: 1,            // show first page
-        count: 10           // count per page
-    }, {
-        total: data.length, // length of data
-        getData: function($defer, params) {
-            $defer.resolve(data.slice((params.page() - 1) * params.count(), params.page() * params.count()));
-        }
-    });
 
 }]);
   
@@ -209,13 +188,15 @@ appControllers.controller('DashboardCtrl', ['$scope','$rootScope','$routeParams'
   if(authority==='ROLE_ADMIN')
   {
       $rootScope.menu_laterale=[{'name':'Situazione Task','page':'#!/situazione_task'},{'name':'Crea Task','page':'#!/crea_task'},{'name':'Assegna Task','page':'#!/assegna_task'},{'name':'Task Conclusi','page':'#!/task_conclusi'}]
+     $location.path("/situazione_task");
       //$scope.menu_laterale=[{'name':'Situazione Task','page':'situazione_task'},{'name':'Crea Task','page':'crea_task'},{'name':'Assegna Task','page':'assegna_task'},{'name':'Task Conclusi','page':'task_conclusi'}]
   }else
   {
-      $rootScope.menu_laterale=[{'name':'Nuovi Task','page':'#!/nuovi_task'},{'name':'Task Presi','page':'#!/task_presi'},{'name':'Task Conclusi','page':'#!/task_conclusi'},{'name':'test','page':'#!/test'}]
+      $rootScope.menu_laterale=[{'name':'Nuovi Task','page':'#!/nuovi_task'},{'name':'Task Presi','page':'#!/task_presi'},{'name':'Task Conclusi','page':'#!/task_conclusi'}]
       //$scope.menu_laterale=[{'name':'Nuovi Task','page':'nuovi_task'},{'name':'Task Presi','page':'task_presi'},{'name':'Task Conclusi','page':'task_conclusi'},{'name':'test','page':'test'}]
+      $location.path("/nuovi_task");
   }
-  $location.path("/situazione_task");
+  
   
   
  

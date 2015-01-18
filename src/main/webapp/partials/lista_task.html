@@ -1,31 +1,122 @@
 <div>
-<p>{{username}}</p>
-<p>Assegnati</p>
-<ul ng-repeat="task in tasksAssigment.content">
-	<li>
-		{{task.title}}
-	</li>
-</ul>
-<p>Presi in carico</p>
-<ul ng-repeat="task in tasksTake.content">
-	<li>
-		{{task.title}}
-	</li>
-</ul>
-<p>Conclusi</p>
-<ul ng-repeat="task in tasksConclude.content">
-	<li>
-		{{task.title}}
-	</li>
-</ul>
+<div class="container-fluid">
+	<div class="pull-left"><h2><strong>{{username}}</strong></h2></div>
+	<div class="pull-right top-buffer"><img  ng-src="{{image}}"></div>
+</div>
+<div class="container-fluid">
+
+   <div class="panel panel-default">
+        <div class="panel-heading">
+            <i class="fa ffa fa-folder-o fa-fw"></i> Task Assegnati
+            <div class="pull-right">
+              
+            </div>
+        </div>
 
 
-     <table ng-table="tableParams" class="table">
-        <tr ng-repeat="user in $data">
-            <td data-title="'Name'">{{user.name}}</td>
-            <td data-title="'Age'">{{user.age}}</td>
-        </tr>
-        </table>
-    </table>
+        <table class="table" cellspacing="0" width="100%">
+        	 <thead>
+        	 	<tr>
+	        		<th>Title</th>
+	        		<th>Data Assegnazione</th>
+	        		<th>Area</th>
+	        		<th>Criticita</th>
+	       		 </tr>
+        	 </thead>
+   			 <tbody>
+	  			<tr ng-repeat="task in tasksAssigment.content" ng-click="openTask(task.id);">
+	  				<td>{{task.title}}</td>
+	  				<td>{{task.assignment | date:"MM/dd/yyyy"}}</td>
+	  				<td>{{task.area}}</td>
+	  				<td><div tooltip="{{task.criticality}}" class="circle_{{task.criticality}}"></div></td>
+	  			</tr>
+	  		</tbody>
+		</table>
+        <!--<ul ng-repeat="task in tasksAssigment.content">
+			<li>
+				
+			</li>
+		</ul>-->
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <i class="fa ffa fa-folder-o fa-fw"></i> Task Presi in Carico
+            <div class="pull-right">
+              
+            </div>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div id="morris-area-chart"></div>
+        </div>
+ 
+
+ 	
+
+
+		 <table class="table" cellspacing="0" width="100%">
+        	 <thead>
+        	 	<tr>
+	        		<th>Title</th>
+	        		<th>Data Assegnazione</th>
+	        		<th>Area</th>
+	        		<th>Criticita</th>
+	       		 </tr>
+        	 </thead>
+   			 <tbody>
+	  			<tr  ng-repeat="task in tasksTake.content" ng-click="openTask(task.id);">
+	  				<td>{{task.title}}</td>
+	  				<td>{{task.assignment | date:"MM/dd/yyyy"}}</td>
+	  				<td>{{task.area}}</td>
+	  				<td><div tooltip="{{task.criticality}}" class="circle_{{task.criticality}}"></div></td>
+	  			</tr>
+	  		</tbody>
+		</table>
+
+    </div>
+
+	<div class="panel panel-default">
+        <div class="panel-heading">
+            <i class="fa ffa fa-folder-o fa-fw"></i> Task Conclusi
+            <div class="pull-right">
+              
+            </div>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div id="morris-area-chart"></div>
+        </div>
+
+	
+
+		 <table class="table" cellspacing="0" width="100%">
+        	 <thead>
+        	 	<tr>
+	        		<th>Title</th>
+	        		<th>Data Assegnazione</th>
+	        		<th>Data Conclusione</th>
+	        		<th>Area</th>
+	        		<th>Criticita</th>
+	       		 </tr>
+        	 </thead>
+   			 <tbody>
+	  			<tr ng-repeat="task in tasksConclude.content" ng-click="openTask(task.id);">
+	  				<td>{{task.title}}</td>
+	  				<td>{{task.assignment | date:"MM/dd/yyyy"}}</td>
+	  				<td>{{task.conclusion | date:"MM/dd/yyyy"}}</td>
+	  				<td>{{task.area}}</td>
+	  				<td><div tooltip="{{task.criticality}}" class="circle_{{task.criticality}}"></div></td>
+	  			</tr>
+	  		</tbody>
+		</table>
+
+
+    </div>
+
+
+
+
+
+
 
 </div>

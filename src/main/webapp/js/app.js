@@ -9,7 +9,8 @@ var appSpringAngular = angular.module('appSpringAngular', [
   'appControllers',
   'appFilters',
   'appServices',
-  'ngTable'
+  'ngTable',
+  'ui.bootstrap'
 ]);
 
 appSpringAngular.run(function($rootScope,$cookieStore,$location) {
@@ -46,10 +47,29 @@ appSpringAngular.config(['$routeProvider', '$locationProvider', '$httpProvider',
         templateUrl: 'partials/dashboard.html',
         controller: 'CreaTaskCtrl'
       }).
-        
+        when('/assegna_task', {
+        templateUrl: 'partials/dashboard.html',
+        controller: 'CreaTaskCtrl'
+      }).
+        when('/task_conclusi', {
+        templateUrl: 'partials/dashboard.html',
+        controller: 'CreaTaskCtrl'
+      }).
        when('/lista_task/:username', {
         templateUrl: 'partials/dashboard.html',
         controller: 'ListaTaskCtrl'
+      }).
+        when('/nuovi_task', {
+        templateUrl: 'partials/dashboard.html',
+        controller: 'CreaTaskCtrl'
+      }).
+    when('/task_presi', {
+        templateUrl: 'partials/dashboard.html',
+        controller: 'CreaTaskCtrl'
+      }).
+      when('/details_task/:task_id', {
+        templateUrl: 'partials/dashboard.html',
+        controller: 'DetailsTaskCtrl'
       }).
       otherwise({
         redirectTo: '/login'

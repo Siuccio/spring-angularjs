@@ -89,7 +89,7 @@ public class TaskServiceImp implements TaskService{
 	@Override
 	public Page<Task> findTaskUserFase(Users user, Fase fase,Integer page) {
 		   PageRequest request =
-	                new PageRequest(page, 5, Sort.Direction.DESC, "title");
+	                new PageRequest(page, 5, Sort.Direction.ASC, "assignment");
 			return repository.findTaskUserWithFasePage(fase, user, request);
 	}
 

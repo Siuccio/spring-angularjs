@@ -118,8 +118,8 @@ appServices.factory('httpInterceptor', ['$q', '$rootScope', '$location',
          
 		        		if (angular.isDefined($rootScope.authToken)) {
 		        			var authToken = $rootScope.authToken;
-		        			
-		        			config.url = config.url + "?token=" + authToken;
+		        			if(config.url.indexOf("tooltip") == -1)
+		        				config.url = config.url + "?token=" + authToken;
 		        			
 		        		}
 		      return config || $q.when(config);
