@@ -5,7 +5,7 @@
 </div>
 <div class="container-fluid">
 
-   <div class="panel panel-default">
+   <div class="panel panel-default panel-default-test">
         <div class="panel-heading">
             <i class="fa ffa fa-folder-o fa-fw"></i> Task Assegnati
             <div class="pull-right">
@@ -32,11 +32,8 @@
 	  			</tr>
 	  		</tbody>
 		</table>
-        <!--<ul ng-repeat="task in tasksAssigment.content">
-			<li>
-				
-			</li>
-		</ul>-->
+		<pagination boundary-links="true" max-size="maxSize" items-per-page="itemsperpageAssigment" total-items="totalElementAssigment" ng-model="data.currentPageAssigment"  class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" ng-change="pageChangedAssigment()" ></pagination>
+
     </div>
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -72,6 +69,7 @@
 	  			</tr>
 	  		</tbody>
 		</table>
+		<pagination boundary-links="true"  items-per-page="itemsperpageTake" total-items="totalElementTake" ng-model="data.currentPageTake"  class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" ng-change="pageChangedTake()"></pagination>
 
     </div>
 
@@ -109,7 +107,7 @@
 	  			</tr>
 	  		</tbody>
 		</table>
-
+		<pagination boundary-links="true" max-size="maxSize" items-per-page="itemsperpageConclude" total-items="totalElementConclude" ng-model="data.currentPageConclude"  class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" ng-change="pageChangedConclude()"></pagination>
 
     </div>
 

@@ -118,7 +118,7 @@ appServices.factory('httpInterceptor', ['$q', '$rootScope', '$location',
          
 		        		if (angular.isDefined($rootScope.authToken)) {
 		        			var authToken = $rootScope.authToken;
-		        			if(config.url.indexOf("tooltip") == -1)
+		        			if(config.url.indexOf("tooltip") == -1 && config.url.indexOf("pagination") == -1)
 		        				config.url = config.url + "?token=" + authToken;
 		        			
 		        		}

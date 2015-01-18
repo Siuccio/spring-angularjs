@@ -49,8 +49,10 @@
 		authentication-manager-ref="authenticationManager">
 		<security:custom-filter ref="authenticationTokenProcessingFilter"
 			position="FORM_LOGIN_FILTER" />
-		<security:intercept-url pattern="/login" access="permitAll()" />
-		<security:intercept-url pattern="/css/**" access="permitAll()" />
+		<security:intercept-url pattern="/login/**" access="permitAll()" />
+		<security:intercept-url pattern="/rest/login/**" access="permitAll()" />
+		<security:intercept-url pattern="/rest/task/**" access="isAuthenticated()"/>
+		<security:intercept-url pattern="/rest/username/**" access="isAuthenticated()"/>
 
 	</security:http>
 

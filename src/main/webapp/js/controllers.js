@@ -96,7 +96,7 @@ appControllers.controller('SituazioneTaskCtrl', ['$scope','$rootScope','$routePa
       //
       //$rootScope.username=username;
       $location.path("lista_task/"+username);
-     ì
+     
     };
 }]);
 
@@ -127,13 +127,9 @@ appControllers.controller('ListaTaskCtrl', ['$scope','$rootScope','$routeParams'
           var title=[];
           var size=task.size;
           
-          var totalPageAssigment=task.totalPages;
-          var numberOfElementsAssigment=task.numberOfElements;
-          /*for(var i=0;i<size;i++)
-          {
-            title.push(task.content[i].title);
-          }
-          $scope.titles=title;*/
+          $scope.totalElementAssigment=task.totalElements;
+          $scope.itemsperpageAssigment=task.numberOfElements;
+          $scope.totalPagesAssigment=task.totalPages;
           $scope.tasksAssigment=task;  
        });
   
@@ -141,13 +137,8 @@ appControllers.controller('ListaTaskCtrl', ['$scope','$rootScope','$routeParams'
           var title=[];
           var size=task.size;
           
-          var totalPageTake=task.totalPages;
-          var numberOfElementsTake=task.numberOfElements;
-          /*for(var i=0;i<size;i++)
-          {
-            title.push(task.content[i].title);
-          }
-          $scope.titles=title;*/
+          $scope.totalElementTake=task.totalElements;
+          $scope.itemsperpageTake=task.numberOfElements;
           $scope.tasksTake=task;  
        });   
 
@@ -156,13 +147,8 @@ appControllers.controller('ListaTaskCtrl', ['$scope','$rootScope','$routeParams'
           var title=[];
           var size=task.size;
           
-          var totalPageConclude=task.totalPages;
-          var numberOfElementsConclude=task.numberOfElements;
-          /*for(var i=0;i<size;i++)
-          {
-            title.push(task.content[i].title);
-          }
-          $scope.titles=title;*/
+          $scope.totalElementConclude=task.totalElements;
+          $scope.itemsperpageConclude=task.numberOfElements;
           $scope.tasksConclude=task;  
        });                     
       
@@ -170,6 +156,51 @@ appControllers.controller('ListaTaskCtrl', ['$scope','$rootScope','$routeParams'
     {
       console.log="Errore load user ruolo ROLE_USER"
     });
+
+
+    
+$scope.maxSize = 3;
+   
+
+
+$scope.data = { currentPageAssigment: 1,currentPageTake:1,currentPageConclude:1}
+$scope.pageChangedAssigment = function() {
+   var curr=$scope.data.currentPageAssigment-1;
+   var user=$scope.user;
+    TaskService.get({username:user.username,fase:'ASSIGNMENT',page:curr}, function(task) {
+          $scope.totalElementAssigment=task.totalElements;
+          $scope.itemsperpageAssigment=task.numberOfElements;
+          $scope.tasksAssigment=task;  
+       });
+    
+  };
+
+  $scope.pageChangedTake = function() {
+   var curr=$scope.data.currentPageTake-1;
+   var user=$scope.user;
+    TaskService.get({username:user.username,fase:'TAKE',page:curr}, function(task) {
+          $scope.totalElementTake=task.totalElements;
+          $scope.itemsperpageTake=task.numberOfElements;
+          $scope.tasksTake=task;  
+       });
+    
+  };
+
+  $scope.pageChangedConclude = function() {
+   var curr=$scope.data.currentPageConclude-1;
+   var user=$scope.user;
+    TaskService.get({username:user.username,fase:'CONCLUDE',page:curr}, function(task) {
+          $scope.totalElementConclude=task.totalElements;
+          $scope.itemsperpageConclude=task.numberOfElements;
+          $scope.tasksConclude=task;  
+       });
+    
+  };
+  $scope.$watch('currentPageAssigment', function(newPage){
+    
+
+    //or any other code here
+  });
 
   $scope.openTask=function(id)
   {
