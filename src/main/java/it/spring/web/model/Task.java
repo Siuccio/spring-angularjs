@@ -1,5 +1,6 @@
 package it.spring.web.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -18,9 +19,14 @@ import javax.persistence.OneToOne;
 
 
 @Entity
-public class Task{
+public class Task implements Serializable{
 
-	 @Id
+	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
 	 @GeneratedValue(strategy = GenerationType.SEQUENCE)
 	 private int id;
     

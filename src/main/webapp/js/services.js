@@ -91,6 +91,27 @@ appServices.factory('TaskService', ['$resource','$rootScope',
 		);
   }]); 
 
+appServices.factory('TaskServiceID', ['$resource','$rootScope',
+  function($resource,$rootScope){
+   return $resource($rootScope.address+'/task/id/:id', {},
+			{
+				get: {
+				method: 'GET',
+				params: {id:'@id'},
+				
+				headers : {'Content-Type': 'application/x-www-form-urlencoded'}
+			},
+			update: {
+				method: 'PUT',
+				params: {id:'@id'},
+				headers : {'Content-Type': 'application/json'}
+				},
+
+			}
+		);
+  }]); 
+
+
 appServices.factory('TaskCountService', ['$resource','$rootScope',
   function($resource,$rootScope){
    return $resource($rootScope.address+'/task/count/:username', {},
@@ -118,10 +139,11 @@ appServices.factory('httpInterceptor', ['$q', '$rootScope', '$location',
          
 		        		if (angular.isDefined($rootScope.authToken)) {
 		        			var authToken = $rootScope.authToken;
-		        			if(config.url.indexOf("tooltip") == -1 && config.url.indexOf("pagination") == -1)
+		        			if(config.url.indexOf("tooltip") == -1 && config.url.indexOf("pagination") == -1 && config.url.indexOf("datepicker")==-1)
 		        				config.url = config.url + "?token=" + authToken;
 		        			
 		        		}
+		        		
 		      return config || $q.when(config);
             },
             requestError: function(request){
@@ -133,7 +155,7 @@ appServices.factory('httpInterceptor', ['$q', '$rootScope', '$location',
             responseError: function (response) {
                 var status = response.status;
                 if(status==401)
-                //	$location.path('/login');
+                	$location.path('/login');
                 return $q.reject(response);
             }
         };

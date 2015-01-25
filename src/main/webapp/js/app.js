@@ -15,7 +15,7 @@ var appSpringAngular = angular.module('appSpringAngular', [
 
 appSpringAngular.run(function($rootScope,$cookieStore,$location) {
   $rootScope.address="http://localhost\\:8080/spring-angularjs/rest";
-	
+  
 
 
      $rootScope.logout = function() {
@@ -75,10 +75,10 @@ appSpringAngular.config(['$routeProvider', '$locationProvider', '$httpProvider',
         redirectTo: '/login'
       });
       
-       	$locationProvider.hashPrefix('!');
-			
-		$httpProvider.interceptors.push('httpInterceptor'); 	
+        $locationProvider.hashPrefix('!');
+      
+    $httpProvider.interceptors.push('httpInterceptor');   
 
        
-       	
+        
   }]);

@@ -20,6 +20,9 @@ public interface TaskRepository extends JpaRepository<Task,Integer> {
 	
 	//public Collection<Task> findByFase(Fase fase);
 	
+		@Query("SELECT t FROM Task t WHERE t.id = :id ")
+		public Task findWithId(@Param("id") Integer id);
+	 
 	@Query("SELECT count(t) FROM Task t WHERE t.fase = :fase and users=:user")
 	public Long countByFase(@Param("fase") Fase fase,@Param("user") Users user);
 	 

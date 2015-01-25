@@ -1,6 +1,8 @@
 package it.spring.web.model;
 
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,7 +10,7 @@ import javax.persistence.Id;
  
 
 @javax.persistence.Entity
-public class Users {
+public class Users implements Serializable{
 
     private static final long serialVersionUID = -8712872385957386182L;
 

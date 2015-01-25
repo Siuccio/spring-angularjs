@@ -24,6 +24,8 @@ public interface TaskService {
 
 	public ResponseTask findCountTaskUser(Users id);
 	
+	public Task findId(Integer id);
+	
 	public Task save(Task task);
 	public void delete(Integer id);
 }

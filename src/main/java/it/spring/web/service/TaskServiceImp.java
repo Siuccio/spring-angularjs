@@ -45,9 +45,7 @@ public class TaskServiceImp implements TaskService{
 	@Override
 	@Transactional
 	public Task save(Task task) {
-
 		return repository.saveAndFlush(task);
-	
 	}
 
 	@Override
@@ -106,6 +104,13 @@ public class TaskServiceImp implements TaskService{
 		   PageRequest request =
 	                new PageRequest(0, 5, Sort.Direction.DESC, "title");
 			return repository.findByFase(Fase.ASSIGNMENT,request);
+	}
+
+	@Override
+	public Task findId(Integer id) {
+		//return repository.getOne(id);
+			return repository.findWithId(id);
+	
 	}
 
 }

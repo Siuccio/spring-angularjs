@@ -101,9 +101,95 @@ appControllers.controller('SituazioneTaskCtrl', ['$scope','$rootScope','$routePa
 }]);
 
 
-appControllers.controller('DetailsTaskCtrl', ['$scope','$rootScope','$routeParams','$cookieStore', '$window','$location','TaskService',
-  function($scope,$rootScope, $routeParams,$cookieStore,$window,$location,TaskService) {
+appControllers.controller('DetailsTaskCtrl', ['$scope','$rootScope','$routeParams','$cookieStore', '$window','$location','TaskServiceID',
+  function($scope,$rootScope, $routeParams,$cookieStore,$window,$location,TaskServiceID) {
     $scope.task_id=$routeParams.task_id;
+    var id=$routeParams.task_id;
+    $scope.pagina="details_task";  
+    $scope.modify=false;
+    $scope.chooseArea = [
+    {  name: 'SVILUPPO'},
+    { name: 'BUG_FIX'}];
+    $scope.chooseCritical = [
+    { name: 'LOW'},
+    { name: 'HIGH'},{ name: 'EMERGERCY'}];
+
+    $scope.chooseFase= [
+    { name: 'ASSIGNMENT'},
+    { name: 'NOT_ASSIGNMENT'},{ name: 'TAKE'},{ name: 'CONCLUDE'}];
+
+      //$scope.area='BUG_FIX';
+      //$scope.critical='LOW';
+      //$scope.fase='TAKE';
+     
+
+  $scope.today = function() {
+    $scope.dt = new Date();
+  };
+  $scope.today();
+
+  $scope.clear = function () {
+    $scope.dt = null;
+  };
+
+  // Disable weekend selection
+  $scope.disabled = function(date, mode) {
+    return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+  };
+
+  $scope.toggleMin = function() {
+    $scope.minDate = $scope.minDate ? null : new Date();
+  };
+  $scope.toggleMin();
+  $scope.mydp ={openedAssigment:false,openConcluse:false}
+  $scope.openAssigment = function($event) {
+     $event.preventDefault();
+     $event.stopPropagation();
+     if (typeof($scope.mydp.openedAssigment) === 'undefined'){
+       $scope.mydp = {};
+     }
+     $scope.mydp.openedAssigment = true;
+  };
+$scope.openConcluse = function($event) {
+     $event.preventDefault();
+     $event.stopPropagation();
+     if (typeof($scope.mydp.openConcluse) === 'undefined'){
+       $scope.mydp = {};
+     }
+     $scope.mydp.openConcluse = true;
+  };
+
+
+
+  $scope.dateOptions = {
+    formatYear: 'yy',
+    startingDay: 1
+  };
+
+    TaskServiceID.get({id:id}, function(task) {
+  
+            $scope.newTask={id:task.id,title:task.title,description:task.description,
+              area:task.area,
+              criticality:task.criticality,fase:task.fase,assignment:task.assignment,conclusion:task.conclusion,dayWork:task.dayWork};
+       });
+    $scope.setModify=function(value)
+    {
+        $scope.modify=value;
+
+    }
+    $scope.isModify=function()
+    {
+        return $scope.modify;
+    }
+
+    $scope.save=function()
+    {
+     
+      TaskServiceID.update({id:$scope.newTask.id},{id:$scope.newTask.id,title:$scope.newTask.title, description:$scope.newTask.description,area:$scope.newTask.area,assignment:$scope.newTask.assignment,conclusion:$scope.conclusion,criticality:$scope.newTask.criticality,dayWork:$scope.newTask.dayWork,fase:$scope.newTask.fase},function(task)
+        {
+            $scope.setModify(false);
+        });
+    }
 }]);
 
 appControllers.controller('CreaTaskCtrl', ['$scope','$rootScope','$routeParams','$cookieStore', '$window','$location','TaskService',
