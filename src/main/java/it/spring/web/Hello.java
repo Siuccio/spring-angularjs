@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class Hello {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-	public String getUserLogged() {
-		asdfasdf
-		return "index";
-	}
+    public String getUserLogged() {
+
+        return "index";
+    }
 
 }
