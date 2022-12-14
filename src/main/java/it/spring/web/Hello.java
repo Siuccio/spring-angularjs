@@ -9,7 +9,7 @@ public class Hello {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
 	public String getUserLogged() {
-		asdfasdf
+
 		return "index";
 	}
 
